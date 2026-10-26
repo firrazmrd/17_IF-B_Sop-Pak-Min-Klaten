@@ -6,13 +6,7 @@ Kelompok **17 — Sop Pak Min Klaten**, kelas **IF-B**, Praktikum Data Science 2
 
 Proyek ini mengkaji apakah riwayat harga dapat membantu mengenali kenaikan harga nominal produsen padi satu bulan ke depan. Metode yang dipilih adalah **klasifikasi biner**: kelas 1 berarti naik, sedangkan kelas 0 berarti turun atau tetap. Data berasal dari FAOSTAT Producer Prices.
 
-`Projek.ipynb` memuat **Business Understanding**, kemudian **Data Understanding**. Bagian data berisi pembacaan CSV, kamus data, audit kualitas dan cakupan, EDA, serta audit awal fitur, target, dan pembagian waktu. Tabel dan empat grafik Matplotlib/Seaborn sudah tersimpan dalam notebook. Kode disusun bertahap dengan penamaan DataFrame, `display()`, `plt.figure()`, dan `plt.show()` seperti notebook pertemuan. Pelatihan model dan evaluasi kinerjanya akan dikerjakan pada tahap berikutnya.
-
-## Model yang dipilih
-
-Model utama dalam rancangan adalah **Regresi Logistik dengan regularisasi L2**, menggunakan optimisasi **L-BFGS**. Pilihan ini mempertimbangkan 120 contoh latih, sedikit fitur, dan korelasi antarfitur harga. **Random Forest** menjadi pembanding untuk menguji pola nonlinier dan interaksi fitur.
-
-Pemilihan akhir akan didasarkan pada macro-F1 validasi dan dibandingkan dengan baseline mayoritas serta persistensi arah. Data uji digunakan setelah model dikunci. Belum ada klaim bahwa salah satu model sudah memberikan kinerja terbaik karena tahap pelatihan belum dikerjakan.
+`Projek.ipynb` memuat **Business Understanding**, kemudian **Data Understanding**. Bagian data berisi pembacaan CSV, kamus data, audit kualitas dan cakupan, EDA, serta audit awal fitur, target, dan pembagian waktu. Tabel dan empat grafik sudah tersimpan dalam notebook. Pelatihan model dan evaluasi kinerjanya akan dikerjakan pada tahap berikutnya.
 
 ## Anggota dan kontribusi
 
@@ -45,7 +39,7 @@ Notebook yang sama digunakan untuk melanjutkan seluruh tahapan proyek. Dataset a
 
 ## Cara menjalankan
 
-Gunakan **Python 3.13.12**. Versi ini juga dicatat dalam `.python-version` dan diperiksa oleh sel kode pertama. Pustaka yang digunakan adalah pandas 2.3.3, NumPy 2.3.5, Matplotlib 3.11.2, Seaborn 0.13.2, IPython 9.10.0, dan ipykernel 7.2.0.
+Gunakan **Python 3.13.12**. Versi ini juga dicatat dalam `.python-version` dan diperiksa oleh sel kode pertama. Pustaka yang digunakan adalah pandas 2.3.3, NumPy 2.3.5, IPython 9.10.0, dan ipykernel 7.2.0.
 
 1. Buka terminal pada folder `17_IF-B_Sop-Pak-Min-Klaten`. Pastikan `python --version` menampilkan `Python 3.13.12`. Jika berbeda, pilih interpreter 3.13.12 terlebih dahulu.
 2. Buat lingkungan virtual dan pasang pustaka berikut melalui PowerShell.
@@ -57,7 +51,7 @@ Gunakan **Python 3.13.12**. Versi ini juga dicatat dalam `.python-version` dan d
 
 3. Buka `Projek.ipynb` di VS Code dengan ekstensi Jupyter atau melalui JupyterLab yang sudah terpasang. Pilih kernel dari `.venv` dengan Python 3.13.12.
 4. Gunakan **Restart Kernel and Run All** agar seluruh sel dijalankan dari awal. Biarkan CSV pada lokasi yang tercantum di struktur repo. Kode tidak memerlukan akses internet saat dijalankan.
-5. Periksa keluaran sel terakhir. Jika semua pemeriksaan lolos, tabel audit menampilkan 511 observasi asli, 576 baris kalender, 436 contoh lengkap, dan 410 contoh pada pembagian waktu.
+5. Periksa keluaran sel terakhir. Jika semua pemeriksaan lolos, alur data akan menampilkan `511 → 576 → 436 → 410`.
 
 GitHub dapat digunakan untuk membaca penjelasan, tabel, dan grafik yang tersimpan tanpa menjalankan ulang notebook. Penjelasan sumber dan checksum tersedia di [data/README.md](data/README.md).
 
