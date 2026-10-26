@@ -1,61 +1,70 @@
-# Sumber dataset
+# Dataset harga produsen padi
 
-Penerbit: **Food and Agriculture Organization of the United Nations (FAO)**.
-Koleksi: **FAOSTAT Producer Prices**.
+Data diterbitkan oleh **Food and Agriculture Organization of the United Nations (FAO)** dalam koleksi **FAOSTAT Producer Prices**.
 
 - [Portal koleksi](https://www.fao.org/faostat/en/#data/PP)
 - [Metadata koleksi](https://www.fao.org/faostat/en/#data/PP/metadata)
-- [Definisi harga produsen](https://www.fao.org/prices/en)
+- [Penjelasan harga produsen](https://www.fao.org/prices/en)
 - [Ketentuan penggunaan basis data FAO](https://www.fao.org/contact-us/terms/db-terms-of-use/en)
 
-## Snapshot yang dipertahankan
+## Berkas yang digunakan
 
-File asli pengguna: `Agricultural producer prices (Global, National - Annual, Monthly) - FAOSTAT.csv`.
-Salinan dalam repo: `raw/faostat_rice_producer_prices.csv`, **byte sama dengan berkas asli**.
+`raw/faostat_rice_producer_prices.csv` adalah salinan utuh berkas pengguna yang bernama `Agricultural producer prices (Global, National - Annual, Monthly) - FAOSTAT.csv`. Hanya nama berkas yang dipersingkat. Isinya tidak diubah.
 
-Snapshot diperoleh 15 Oktober 2026 (catatan konteks proyek); diverifikasi ulang 26 Oktober 2026. Metadata koleksi yang tersimpan mencatat pembaruan 9 Oktober 2026. Kolom tanggal pada CSV adalah bulan referensi, bukan tanggal publikasi.
+Menurut catatan proyek, snapshot diperoleh pada 15 Oktober 2026. Pemeriksaan ulang dilakukan pada 26 Oktober 2026. Metadata koleksi yang tersimpan mencatat pembaruan pada 9 Oktober 2026. Bulan pada CSV adalah bulan referensi, bukan tanggal publikasi.
 
-Ukuran: **382.442 byte**, **5.341 baris**, **17 kolom**, **73 negara**, Januari 2010–Januari 2025. Ini cakupan berkas ekspor pengguna, bukan keseluruhan basis data FAOSTAT.
+| Keterangan | Nilai |
+|---|---|
+| Ukuran berkas | 382.442 byte |
+| Baris dan kolom | 5.341 baris, 17 kolom |
+| Cakupan berkas ekspor | 73 negara, Januari 2010–Januari 2025 |
+| Frekuensi dan komoditas | Monthly, Rice, kode 27 |
 
-SHA-256:
+Cakupan tersebut hanya menjelaskan berkas ekspor yang digunakan, bukan keseluruhan basis data FAOSTAT.
+
+SHA-256 berkas:
 
 ```text
 5f6470bc3e1284340aaa1022f032bdb8fb49c9aaf059054b41d19e3790636b76
 ```
 
-Verifikasi pada PowerShell:
+Notebook memeriksa ukuran dan checksum sebelum memproses data. Pemeriksaan manual dari akar repo juga dapat dilakukan melalui PowerShell:
 
 ```powershell
 Get-FileHash -Algorithm SHA256 -LiteralPath 'data/raw/faostat_rice_producer_prices.csv'
 ```
 
-## Seleksi penelitian yang direncanakan
+## Seleksi penelitian
 
-Gunakan `Item=Rice`, `Item Code=27`, `Frequency=Monthly`, kolom `Producer Price (LCU/tonne)`, flag harga `A`, tahun **2022–2024**, serta kode M49 Asia berikut:
+`Projek.ipynb` membaca CSV asli, memeriksa komoditas `Rice` dengan kode 27 dan frekuensi `Monthly`, lalu memilih tahun **2022–2024**, harga `Producer Price (LCU/tonne)` dengan flag `A`, dan kode M49 Asia berikut:
 
 `050, 064, 096, 144, 156, 360, 392, 398, 410, 417, 586, 608, 704, 764, 792, 860`.
 
-Daftar tersebut menghasilkan 16 negara dengan observasi pada periode penelitian. Rusia tidak dimasukkan karena klasifikasi regional M49 menempatkannya di Eropa. Negara Asia lain pada berkas mentah tidak memiliki observasi pada rentang yang dipilih. Notebook Progress 1 belum menjalankan seleksi ini.
+Seleksi tersebut menghasilkan **511 observasi asli dari 16 negara**. Kode wilayah mengikuti [M49 PBB](https://unstats.un.org/unsd/methodology/m49/). Rusia tidak dimasukkan karena berada dalam kelompok statistik Eropa. Negara Asia lain yang tidak memiliki observasi dalam rentang terpilih tidak disertakan.
+
+Kalender penelitian memiliki **576 kombinasi negara-bulan**, termasuk **65 bulan yang tidak tercatat**. Gap tetap kosong. Notebook tidak mengisi harga dengan nol, interpolasi, atau data sintetis.
 
 ## Skema ringkas
 
-| Kolom | Arti |
+Kamus seluruh 17 kolom, tipe data, satuan, dan kegunaannya ditampilkan pada bagian **10.2** notebook. Ringkasannya sebagai berikut:
+
+| Kolom | Arti dan penggunaan |
 |---|---|
-| `faostat` | Kode wilayah internal FAOSTAT; ID, bukan fitur numerik harga. |
-| `M49 Code`, `Country` | Kode M49 dan nama negara. Pertahankan kode sebagai string tiga digit. |
-| `Item Code`, `Item` | Kode dan nama komoditas; ekspor ini menggunakan 27/Rice. |
+| `faostat` | ID wilayah internal FAOSTAT, bukan fitur numerik harga. |
+| `M49 Code`, `Country` | Kode M49 dan nama negara. Kode dipertahankan sebagai teks tiga digit. |
+| `Item Code`, `Item` | Identitas komoditas. Ekspor ini menggunakan 27/Rice. |
 | `year`, `Months`, `date` | Tahun, nama bulan, dan tanggal representatif awal bulan. |
 | `Producer Price (LCU/tonne)` | Harga nominal produsen dalam mata uang lokal per ton. |
-| `Producer Price (LCU/tonne) flag` | Status nilai; `A` berarti angka resmi menurut penerbit. |
-| `Producer Price (SLC/tonne)` dan flag | Harga dalam satuan mata uang lokal standar dan statusnya; seluruh nilai kosong pada ekspor ini. |
-| `Producer Price (USD/tonne)` dan flag | Harga dolar AS per ton dan statusnya; seluruh nilai kosong pada ekspor ini. |
-| `Producer Price Index (2014–2016 = 100)` dan flag | Indeks harga produsen dan statusnya; seluruh nilai kosong pada ekspor ini. |
-| `Frequency` | Frekuensi; seluruh baris ekspor ini bulanan. |
+| `Producer Price (LCU/tonne) flag` | Status nilai. `A` berarti angka resmi menurut penerbit. |
+| Harga `SLC/tonne` dan flag | Ukuran mata uang lokal standar dan statusnya, seluruhnya kosong pada ekspor ini. |
+| Harga `USD/tonne` dan flag | Harga dolar AS per ton dan statusnya, seluruhnya kosong pada ekspor ini. |
+| Indeks harga produsen dan flag | Indeks dengan dasar 2014–2016 = 100 dan statusnya, seluruhnya kosong pada ekspor ini. |
+| `Frequency` | Frekuensi observasi. Seluruh baris berfrekuensi bulanan. |
 
-Enam kolom kosong merupakan tiga ukuran alternatif beserta flag-nya. Kekosongan tersebut tidak sama dengan harga LCU yang hilang. Jangan membandingkan level LCU antarnegara atau mengisi bulan yang tidak tercatat dengan harga nol.
+Enam kolom kosong merupakan tiga ukuran alternatif beserta flag-nya. Kekosongan tersebut berbeda dari gap pada kalender. Level harga LCU tidak digabung untuk membandingkan harga antarnegara karena mata uangnya berbeda.
 
-## Atribusi dan lisensi data
+## Atribusi dan lisensi
 
-FAO. 2026. *FAOSTAT: Producer Prices*. Snapshot diakses 15 Oktober 2026. https://www.fao.org/faostat/en/#data/PP. Licence: CC BY 4.0, dengan ketentuan penggunaan basis data FAO. Seleksi cakupan dan analisis turunan merupakan pekerjaan penyusun proyek.
+FAO. 2026. *FAOSTAT: Producer Prices*. Diakses 15 Oktober 2026. https://www.fao.org/faostat/en/#data/PP. Licence: CC BY 4.0, dengan ketentuan tambahan basis data FAO. Seleksi cakupan dan analisis turunan dijelaskan dalam notebook proyek.
 
-Redistribusi untuk penelitian disertai atribusi, penjelasan perubahan, dan ketentuan tambahan FAO. Tidak ada klaim bahwa FAO menjadi sponsor, menyetujui, atau memvalidasi proyek. Lisensi MIT pada akar repository tidak diterapkan ulang terhadap dataset ini.
+Dataset disertakan untuk penelitian dengan atribusi kepada FAO. Lisensi MIT pada akar repo berlaku untuk kode proyek dan tidak menggantikan lisensi data. Tidak ada klaim bahwa FAO berpartisipasi, menyetujui, mendanai, atau memvalidasi proyek ini.

@@ -1,61 +1,84 @@
 # Klasifikasi Kenaikan Harga Produsen Padi Bulan Berikutnya di 16 Negara Asia Periode 2022–2024
 
-Kelompok **17 — Sop Pak Min Klaten**, **IF-B**, Praktikum Data Science 2026/2027, UPN “Veteran” Yogyakarta.
+Kelompok **17 — Sop Pak Min Klaten**, kelas **IF-B**, Praktikum Data Science 2026/2027, UPN “Veteran” Yogyakarta.
 
-## Status dan ruang lingkup
+## Ringkasan dan status
 
-**Progress 1: Business Understanding**, mengikuti sembilan butir capaian presentasi yang diberikan. Metode: **klasifikasi biner**, 1 = naik dan 0 = tidak naik (turun atau tetap) pada bulan berikutnya.
+Proyek ini mengkaji apakah riwayat harga dapat membantu mengenali kenaikan harga nominal produsen padi satu bulan ke depan. Metode yang dipilih adalah **klasifikasi biner**: kelas 1 berarti naik, sedangkan kelas 0 berarti turun atau tetap. Data berasal dari FAOSTAT Producer Prices.
 
-Notebook saat ini hanya memuat Business Understanding. Pengumpulan data dalam notebook, EDA, cleaning, preprocessing, Modeling, Evaluation dan Conclusion merupakan tahap lanjutan. Panduan menyebut pengumpulan 30 Oktober 2026 sudah mencakup pengumpulan data sampai preprocessing. Versi Progress 1 ini belum mencakup seluruh tahapan pada tenggat tersebut.
+`Projek.ipynb` memuat **Business Understanding**, kemudian **Data Understanding**. Bagian data berisi pembacaan CSV, kamus data, audit kualitas dan cakupan, EDA, serta audit awal fitur, target, dan pembagian waktu. Tabel dan empat grafik sudah tersimpan dalam notebook. Pelatihan model dan evaluasi kinerjanya akan dikerjakan pada tahap berikutnya.
 
 ## Anggota dan kontribusi
 
-| Nama | NIM | Kelas | Kontribusi awal (bersama) |
+| Nama | NIM | Kelas | Kontribusi bersama |
 |---|---|---|---|
-| Ghazian Muhammad Al Faruq | 123240013 | IF-B | Perumusan masalah, stakeholder, tujuan, metrik, asumsi, risiko, dan pemetaan data. |
-| M. Affan Musyafa' | 123240155 | IF-B | Perumusan masalah, stakeholder, tujuan, metrik, asumsi, risiko, dan pemetaan data. |
-| Firraz Muhammad Raihan Daffa | 123240170 | IF-B | Perumusan masalah, stakeholder, tujuan, metrik, asumsi, risiko, dan pemetaan data. |
-| Jauza Ilham Mahardhika Putra | 123240174 | IF-B | Perumusan masalah, stakeholder, tujuan, metrik, asumsi, risiko, dan pemetaan data. |
+| Ghazian Muhammad Al Faruq | 123240013 | IF-B | Perumusan masalah, penelusuran sumber, audit data, EDA, dan penulisan penjelasan. |
+| M. Affan Musyafa' | 123240155 | IF-B | Perumusan masalah, penelusuran sumber, audit data, EDA, dan penulisan penjelasan. |
+| Firraz Muhammad Raihan Daffa | 123240170 | IF-B | Perumusan masalah, penelusuran sumber, audit data, EDA, dan penulisan penjelasan. |
+| Jauza Ilham Mahardhika Putra | 123240174 | IF-B | Perumusan masalah, penelusuran sumber, audit data, EDA, dan penulisan penjelasan. |
 
-Menurut keterangan kelompok, tahap awal Business Understanding dikerjakan bersama oleh seluruh anggota dengan kontribusi setara. Kolom kontribusi mencatat cakupan pekerjaan yang dilakukan bersama. Catatan kontribusi diperbarui saat tahap berikutnya dikerjakan.
+Seluruh anggota mengerjakan tahap ini bersama dengan kontribusi setara.
 
-## Isi repository
+## Isi repo
 
 ```text
-.
-├── README.md
+17_IF-B_Sop-Pak-Min-Klaten/
 ├── Projek.ipynb
-├── data/
-│   ├── README.md
-│   └── raw/faostat_rice_producer_prices.csv
+├── README.md
+├── requirements.txt
+├── .python-version
 ├── .gitignore
-└── LICENSE
+├── LICENSE
+└── data/
+    ├── README.md
+    └── raw/
+        └── faostat_rice_producer_prices.csv
 ```
 
-CSV dipertahankan utuh dan hanya nama berkas yang dipersingkat. Isi repository saat ini mendukung tahap Business Understanding dan akan dikembangkan mengikuti capaian berikutnya.
+Notebook yang sama digunakan untuk melanjutkan seluruh tahapan proyek. Dataset asli disimpan satu kali. Seluruh hasil audit dan grafik ditampilkan di notebook, sehingga proses tidak membuat file hasil tambahan di repo.
 
-## Cara membuka
+## Cara menjalankan
 
-1. Buka `Projek.ipynb` melalui JupyterLab, Jupyter Notebook, atau VS Code dengan dukungan notebook.
-2. Baca sel Markdown secara berurutan. Tidak ada sel kode atau instalasi pustaka analisis yang diperlukan pada tahap ini. GitHub juga dapat menampilkan isi notebook.
-3. Periksa sumber, batas cakupan dan checksum CSV pada `data/README.md`.
+Gunakan **Python 3.13.12**. Versi ini juga dicatat dalam `.python-version` dan diperiksa oleh sel kode pertama. Pustaka yang digunakan adalah pandas 2.3.3, NumPy 2.3.5, IPython 9.10.0, dan ipykernel 7.2.0.
 
-## Pemetaan capaian Progress 1
+1. Buka terminal pada folder `17_IF-B_Sop-Pak-Min-Klaten`. Pastikan `python --version` menampilkan `Python 3.13.12`. Jika berbeda, pilih interpreter 3.13.12 terlebih dahulu.
+2. Buat lingkungan virtual dan pasang pustaka berikut melalui PowerShell.
 
-| No. | Capaian | Lokasi di notebook |
-|---:|---|---|
-| 1 | Judul spesifik dan ruang lingkup tepat | Bagian 1 |
-| 2 | Judul selaras dengan tujuan dan metrik | Bagian 1, 3–5 |
-| 3 | Pernyataan masalah dan stakeholder | Bagian 2 |
-| 4 | Tujuan SMART | Bagian 3 |
-| 5 | Metrik keberhasilan | Bagian 5 |
-| 6 | Asumsi dan batasan | Bagian 6 |
-| 7 | Risiko dan etika beserta mitigasi | Bagian 7 |
-| 8 | Nilai bisnis dan use-case | Bagian 8 |
-| 9 | Pemetaan stakeholder–data | Bagian 9 |
+   ```powershell
+   python -m venv .venv
+   .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+   ```
 
-## Sumber dan lisensi
+3. Buka `Projek.ipynb` di VS Code dengan ekstensi Jupyter atau melalui JupyterLab yang sudah terpasang. Pilih kernel dari `.venv` dengan Python 3.13.12.
+4. Gunakan **Restart Kernel and Run All** agar seluruh sel dijalankan dari awal. Biarkan CSV pada lokasi yang tercantum di struktur repo. Kode tidak memerlukan akses internet saat dijalankan.
+5. Periksa keluaran sel terakhir. Jika semua pemeriksaan lolos, alur data akan menampilkan `511 → 576 → 436 → 410`.
 
-[FAOSTAT Producer Prices](https://www.fao.org/faostat/en/#data/PP), Food and Agriculture Organization of the United Nations. Snapshot lokal diperoleh 15 Oktober 2026 dan diverifikasi 26 Oktober 2026. Atribusi, skema ringkas, filter penelitian dan checksum ada pada `data/README.md`.
+GitHub dapat digunakan untuk membaca penjelasan, tabel, dan grafik yang tersimpan tanpa menjalankan ulang notebook. Penjelasan sumber dan checksum tersedia di [data/README.md](data/README.md).
 
-`LICENSE` mempertahankan lisensi MIT proyek asli. Lisensi tersebut tidak menggantikan lisensi dataset FAO, yaitu CC BY 4.0 dengan [ketentuan tambahan basis data FAO](https://www.fao.org/contact-us/terms/db-terms-of-use/en). FAO tidak memberikan endorsement terhadap proyek ini.
+## Isi notebook dan hasil audit
+
+| Bagian | Isi |
+|---|---|
+| Business Understanding, bagian 1–9 | Masalah, stakeholder, tujuan SMART, metode, metrik, asumsi, risiko, nilai penggunaan, dan pemetaan data. |
+| Data Understanding 10.1–10.2 | Sumber dan lisensi, pemeriksaan snapshot, kamus seluruh kolom, serta seleksi negara dan periode. |
+| Data Understanding 10.3–10.4 | Missing value, duplikasi, harga tidak positif, kalender bulanan, dan keterwakilan negara. |
+| Data Understanding 10.5 | Distribusi perubahan harga dan penandaan nilai ekstrem pada jendela latih. |
+| Data Understanding 10.6 | Audit fitur dan target, pembagian waktu, korelasi fitur, dan komposisi kelas. |
+| Data Understanding 10.7 | Kesimpulan, keterbatasan, tindak lanjut, dan pemeriksaan hasil. |
+
+Hasil yang diperoleh dari snapshot yang disertakan:
+
+- Berkas asli memuat **5.341 baris, 17 kolom, dan 73 negara**. Seleksi 16 negara Asia pada 2022–2024 menghasilkan **511 observasi harga resmi**.
+- Kalender penelitian memiliki **576 kombinasi negara-bulan**, termasuk **65 bulan yang tidak tercatat**. Penambahan kalender hanya menandai kekosongan dan tidak membuat harga baru.
+- Audit fitur dan target menghasilkan **436 contoh lengkap**. Setelah 26 contoh pada batas waktu dikeluarkan, tersedia **120 latih, 145 validasi, dan 145 uji**.
+- EDA jendela latih memakai **165 return bulanan**, dengan **9 nilai** ditandai oleh pagar IQR per negara. Nilai tersebut dipertahankan karena penandaan belum membuktikan adanya kesalahan data.
+
+Harga LCU antarnegara tidak dibandingkan langsung. Eksplorasi yang dapat memengaruhi pemilihan fitur dibatasi pada data latih. Kelima fitur berasal dari harga dan kalender, sehingga bukan lima variabel sumber yang independen. Cakupan, tanggal publikasi yang tidak tersedia, dan seri yang pendek tetap membatasi penggunaan hasil.
+
+## Laporan dan sumber data
+
+Lampiran C pada [laporan proyek](https://docs.google.com/document/d/1kpoLL2OyEa3MtBHeF0fC8zz1tMHVTMoClQNWpYQM3xY/edit?tab=t.aigts47j05it) menjelaskan repo, isi notebook, dan cara mengulang audit.
+
+FAO. 2026. *FAOSTAT: Producer Prices*. Snapshot diakses 15 Oktober 2026 dan diverifikasi ulang 26 Oktober 2026. [Portal koleksi](https://www.fao.org/faostat/en/#data/PP).
+
+`LICENSE` mempertahankan lisensi MIT untuk kode proyek. Dataset menggunakan CC BY 4.0 dengan [ketentuan tambahan basis data FAO](https://www.fao.org/contact-us/terms/db-terms-of-use/en). Atribusi lengkap dan batas penggunaan data tercantum dalam `data/README.md`. Tidak ada klaim dukungan atau validasi dari FAO.
