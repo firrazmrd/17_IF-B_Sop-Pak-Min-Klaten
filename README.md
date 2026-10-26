@@ -6,7 +6,13 @@ Kelompok **17 — Sop Pak Min Klaten**, kelas **IF-B**, Praktikum Data Science 2
 
 Proyek ini mengkaji apakah riwayat harga dapat membantu mengenali kenaikan harga nominal produsen padi satu bulan ke depan. Metode yang dipilih adalah **klasifikasi biner**: kelas 1 berarti naik, sedangkan kelas 0 berarti turun atau tetap. Data berasal dari FAOSTAT Producer Prices.
 
-`Projek.ipynb` memuat **Business Understanding**, kemudian **Data Understanding**. Bagian data berisi pembacaan CSV, kamus data, audit kualitas dan cakupan, EDA, serta audit awal fitur, target, dan pembagian waktu. Tabel dan empat grafik sudah tersimpan dalam notebook. Pelatihan model dan evaluasi kinerjanya akan dikerjakan pada tahap berikutnya.
+`Projek.ipynb` memuat **Business Understanding**, kemudian **Data Understanding**. Bagian data berisi pembacaan CSV, kamus data, audit kualitas dan cakupan, EDA, serta audit awal fitur, target, dan pembagian waktu. Tabel dan empat grafik Matplotlib/Seaborn sudah tersimpan dalam notebook. Kode disusun bertahap dengan penamaan DataFrame, `display()`, `plt.figure()`, dan `plt.show()` seperti notebook pertemuan. Pelatihan model dan evaluasi kinerjanya akan dikerjakan pada tahap berikutnya.
+
+## Model yang dipilih
+
+Model utama dalam rancangan adalah **Regresi Logistik dengan regularisasi L2**, menggunakan optimisasi **L-BFGS**. Pilihan ini mempertimbangkan 120 contoh latih, sedikit fitur, dan korelasi antarfitur harga. **Random Forest** menjadi pembanding untuk menguji pola nonlinier dan interaksi fitur.
+
+Pemilihan akhir akan didasarkan pada macro-F1 validasi dan dibandingkan dengan baseline mayoritas serta persistensi arah. Data uji digunakan setelah model dikunci. Belum ada klaim bahwa salah satu model sudah memberikan kinerja terbaik karena tahap pelatihan belum dikerjakan.
 
 ## Anggota dan kontribusi
 
