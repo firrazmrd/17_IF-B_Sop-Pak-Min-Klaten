@@ -8,11 +8,11 @@ Proyek ini mengkaji apakah riwayat harga dapat membantu mengenali kenaikan harga
 
 `Projek.ipynb` memuat **Business Understanding**, kemudian **Data Understanding**. Bagian data berisi pembacaan CSV, kamus data, audit kualitas dan cakupan, EDA, serta audit awal fitur, target, dan pembagian waktu. Tabel dan empat grafik Matplotlib/Seaborn sudah tersimpan dalam notebook. Kode disusun bertahap dengan penamaan DataFrame, `display()`, `plt.figure()`, dan `plt.show()` seperti notebook pertemuan. Pelatihan model dan evaluasi kinerjanya akan dikerjakan pada tahap berikutnya.
 
-## Model yang dipilih
+## Fokus Business Understanding
 
-Model utama dalam rancangan adalah **Regresi Logistik dengan regularisasi L2**, menggunakan optimisasi **L-BFGS**. Pilihan ini mempertimbangkan 120 contoh latih, sedikit fitur, dan korelasi antarfitur harga. **Random Forest** menjadi pembanding untuk menguji pola nonlinier dan interaksi fitur.
+Business Understanding menjelaskan masalah pemantauan arah harga, status calon stakeholder, tujuan SMART yang dipisah menjadi lima unsur, definisi target, asumsi, metrik, risiko, nilai penggunaan, dan pemetaan stakeholder–data. **Bagian 6 notebook adalah Metrik keberhasilan.**
 
-Pemilihan akhir akan didasarkan pada macro-F1 validasi dan dibandingkan dengan baseline mayoritas serta persistensi arah. Data uji digunakan setelah model dikunci. Belum ada klaim bahwa salah satu model sudah memberikan kinerja terbaik karena tahap pelatihan belum dikerjakan.
+Ukuran utama pengujian yang direncanakan adalah macro-F1. Tambahan informasi dinilai dari selisih terhadap pembanding sederhana terbaik pada contoh uji yang sama. Selisih positif belum membuktikan manfaat operasional atau keuntungan finansial. Ukuran ini menjadi dasar penilaian hasil klasifikasi pada data uji.
 
 ## Anggota dan kontribusi
 
@@ -57,7 +57,7 @@ Gunakan **Python 3.13.12**. Versi ini juga dicatat dalam `.python-version` dan d
 
 3. Buka `Projek.ipynb` di VS Code dengan ekstensi Jupyter atau melalui JupyterLab yang sudah terpasang. Pilih kernel dari `.venv` dengan Python 3.13.12.
 4. Gunakan **Restart Kernel and Run All** agar seluruh sel dijalankan dari awal. Biarkan CSV pada lokasi yang tercantum di struktur repo. Kode tidak memerlukan akses internet saat dijalankan.
-5. Periksa keluaran sel terakhir. Jika semua pemeriksaan lolos, alur data akan menampilkan `511 → 576 → 436 → 410`.
+5. Periksa hasil sel terakhir. Jika semua pemeriksaan lolos, alur data akan menampilkan `511 → 576 → 436 → 410`.
 
 GitHub dapat digunakan untuk membaca penjelasan, tabel, dan grafik yang tersimpan tanpa menjalankan ulang notebook. Penjelasan sumber dan checksum tersedia di [data/README.md](data/README.md).
 
@@ -65,12 +65,13 @@ GitHub dapat digunakan untuk membaca penjelasan, tabel, dan grafik yang tersimpa
 
 | Bagian | Isi |
 |---|---|
-| Business Understanding, bagian 1–9 | Masalah, stakeholder, tujuan SMART, metode, metrik, asumsi, risiko, nilai penggunaan, dan pemetaan data. |
+| Business Understanding, bagian 1–9 | Masalah dan tujuan bisnis, SMART S–M–A–R–T, definisi tugas, asumsi, metrik pada bagian 6, risiko, use-case, dan pemetaan stakeholder–data. |
 | Data Understanding 10.1–10.2 | Sumber dan lisensi, pemeriksaan snapshot, kamus seluruh kolom, serta seleksi negara dan periode. |
 | Data Understanding 10.3–10.4 | Missing value, duplikasi, harga tidak positif, kalender bulanan, dan keterwakilan negara. |
 | Data Understanding 10.5 | Distribusi perubahan harga dan penandaan nilai ekstrem pada jendela latih. |
 | Data Understanding 10.6 | Audit fitur dan target, pembagian waktu, korelasi fitur, dan komposisi kelas. |
 | Data Understanding 10.7 | Kesimpulan, keterbatasan, tindak lanjut, dan pemeriksaan hasil. |
+| Plan future model dan algoritma, bagian 11 | Kandidat dan pengaturan teknis dari rancangan sebelumnya yang seluruhnya masih berupa rencana. |
 
 Hasil yang diperoleh dari snapshot yang disertakan:
 
@@ -88,3 +89,7 @@ Lampiran C pada [laporan proyek](https://docs.google.com/document/d/1kpoLL2OyEa3
 FAO. 2026. *FAOSTAT: Producer Prices*. Snapshot diakses 15 Oktober 2026 dan diverifikasi ulang 26 Oktober 2026. [Portal koleksi](https://www.fao.org/faostat/en/#data/PP).
 
 `LICENSE` mempertahankan lisensi MIT untuk kode proyek. Dataset menggunakan CC BY 4.0 dengan [ketentuan tambahan basis data FAO](https://www.fao.org/contact-us/terms/db-terms-of-use/en). Atribusi lengkap dan batas penggunaan data tercantum dalam `data/README.md`. Tidak ada klaim dukungan atau validasi dari FAO.
+
+## Plan future model dan algoritma
+
+Rencana teknis ditempatkan setelah seluruh Data Understanding di `Projek.ipynb`. Regresi Logistik berregularisasi L2 dengan optimisasi L-BFGS dipertahankan sebagai kandidat utama awal, dan Random Forest sebagai kandidat pembanding. Rencana juga mencatat dua baseline, penanganan fitur, parameter awal, serta batas informasi latih/validasi/uji. Kesesuaian dengan materi praktikum harus diperiksa sebelum pelatihan. Kandidat dipilih melalui macro-F1 validasi, lalu dinilai pada data uji dengan pengaturan yang sama.
