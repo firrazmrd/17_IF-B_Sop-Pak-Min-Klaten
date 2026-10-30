@@ -1,4 +1,4 @@
-# Klasifikasi Kenaikan Harga Produsen Padi Bulan Berikutnya di 16 Negara Asia Periode 2022–2024
+# Klasifikasi Arah Kenaikan Harga Produsen Padi Bulan Berikutnya di 16 Negara Asia Periode 2022–2024
 
 Kelompok **17 — Sop Pak Min Klaten**, kelas **IF-B**, Praktikum Data Science 2026/2027, UPN “Veteran” Yogyakarta.
 
