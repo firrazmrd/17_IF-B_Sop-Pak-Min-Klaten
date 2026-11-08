@@ -1,4 +1,4 @@
-# Klasifikasi Kenaikan Harga Produsen Padi Bulan Berikutnya di 16 Negara Asia Periode 2022–2024
+# Klasifikasi Arah Kenaikan Harga Produsen Padi Bulan Berikutnya di 16 Negara Asia Periode 2022–2024
 
 Kelompok **17 — Sop Pak Min Klaten**, kelas **IF-B**, Praktikum Data Science 2026/2027, UPN “Veteran” Yogyakarta.
 
@@ -18,12 +18,10 @@ Ukuran utama pengujian yang direncanakan adalah macro-F1. Tambahan informasi din
 
 | Nama | NIM | Kelas | Kontribusi bersama |
 |---|---|---|---|
-| Ghazian Muhammad Al Faruq | 123240013 | IF-B | Perumusan masalah, penelusuran sumber, audit data, EDA, dan penulisan penjelasan. |
-| M. Affan Musyafa' | 123240155 | IF-B | Perumusan masalah, penelusuran sumber, audit data, EDA, dan penulisan penjelasan. |
-| Firraz Muhammad Raihan Daffa | 123240170 | IF-B | Perumusan masalah, penelusuran sumber, audit data, EDA, dan penulisan penjelasan. |
-| Jauza Ilham Mahardhika Putra | 123240174 | IF-B | Perumusan masalah, penelusuran sumber, audit data, EDA, dan penulisan penjelasan. |
-
-Seluruh anggota mengerjakan tahap ini bersama dengan kontribusi setara.
+| Ghazian Muhammad Al Faruq | 123240013 | IF-B | Perumusan masalah, penelusuran sumber, dan penulisan penjelasan. |
+| M. Affan Musyafa' | 123240155 | IF-B | Perumusan masalah, penelusuran sumber, EDA, dan penulisan penjelasan. |
+| Firraz Muhammad Raihan Daffa | 123240170 | IF-B | Penelusuran sumber, audit data dan penulisan penjelasan. |
+| Jauza Ilham Mahardhika Putra | 123240174 | IF-B | Penelusuran sumber, audit data dan EDA |
 
 ## Isi repo
 
