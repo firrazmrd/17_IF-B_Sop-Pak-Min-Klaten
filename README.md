@@ -40,6 +40,9 @@ Ukuran utama pengujian adalah macro-F1. Tambahan informasi dinilai dari selisih 
 ```text
 17_IF-B_Sop-Pak-Min-Klaten/
 ├── Projek.ipynb
+├── dashboard_app.py
+├── .streamlit/
+│   └── config.toml
 ├── README.md
 ├── requirements.txt
 ├── .python-version
@@ -47,11 +50,13 @@ Ukuran utama pengujian adalah macro-F1. Tambahan informasi dinilai dari selisih 
 ├── LICENSE
 └── data/
     ├── README.md
-    └── raw/
-        └── faostat_rice_producer_prices.csv
+    ├── raw/
+    │   └── faostat_rice_producer_prices.csv
+    └── results/
+        └── dashboard_results.json
 ```
 
-Notebook yang sama digunakan untuk melanjutkan seluruh tahapan proyek. Dataset asli disimpan satu kali. Seluruh hasil audit dan grafik ditampilkan di notebook, sehingga proses tidak membuat file hasil tambahan di repo.
+Notebook yang sama digunakan untuk melanjutkan seluruh tahapan proyek. Dataset asli disimpan satu kali. Notebook menyimpan hasil audit dan grafik. Dashboard juga memakai ekspor prediksi per contoh yang tersimpan di dalam repo.
 
 ## Cara menjalankan
 
@@ -70,6 +75,18 @@ Gunakan **Python 3.13.12** sesuai `.python-version`. Versi pustaka untuk pengola
 5. Periksa alur data `511 → 576 → 436 → 410` pada bagian Feature Selection dan hasil untuk 145 contoh uji pada bagian Evaluasi.
 
 GitHub dapat digunakan untuk membaca penjelasan, tabel, dan grafik yang tersimpan tanpa menjalankan ulang notebook. Penjelasan sumber dan checksum tersedia di [data/README.md](data/README.md).
+
+### Menjalankan dashboard Streamlit
+
+Setelah memasang pustaka dengan langkah di atas, jalankan perintah berikut dari akar repo.
+
+```powershell
+.\.venv\Scripts\python.exe -m streamlit run dashboard_app.py
+```
+
+Buka alamat lokal yang tercetak di terminal. Streamlit biasanya menampilkan `http://localhost:8501`. Gunakan navigasi untuk membuka Ringkasan, Dataset, Klasifikasi, Evaluasi, atau Notebook. Tabel dataset dan prediksi dapat diunduh sebagai CSV sesuai filter. Di halaman Notebook, pilih bagian untuk membaca penjelasan, tabel, serta grafik yang tersimpan.
+
+Dataset dapat ditelusuri berdasarkan tahun observasi hingga 2024. Pilihan tahun klasifikasi mengikuti **bulan sasaran** dan mencakup 2022 (latih), 2023 (validasi), dan 2024 (uji). Tahun tersebut memuat masing-masing 120, 145, dan 145 contoh. Dashboard menampilkan prediksi tersimpan untuk tiga model dan dua baseline, serta menghitung ringkasan metrik dari prediksi itu. Keluaran ini berasal dari `data/results/dashboard_results.json`, sementara perhitungan dan pelatihan tetap berada di notebook.
 
 ## Isi notebook dan hasil audit
 
