@@ -1,12 +1,14 @@
 # Klasifikasi Arah Kenaikan Harga Produsen Padi Bulan Berikutnya di 16 Negara Asia Periode 2022–2024
 
-Kelompok **17 — Sop Pak Min Klaten**, kelas **IF-B**, Praktikum Data Science 2026/2027, UPN “Veteran” Yogyakarta.
+Kelompok **17 (Sop Pak Min Klaten)**, kelas **IF-B**, Data Science 2026/2027, UPN “Veteran” Yogyakarta. Repository ini digunakan untuk proyek akhir yang sama pada kelas teori dan praktikum.
 
 ## Ringkasan dan status
 
 Proyek ini mengkaji apakah riwayat harga dapat membantu mengenali kenaikan harga nominal produsen padi satu bulan ke depan. Metode yang dipilih adalah **klasifikasi biner**: kelas 1 berarti naik, sedangkan kelas 0 berarti turun atau tetap. Data berasal dari FAOSTAT Producer Prices.
 
-`Projek.ipynb` memuat **Business Understanding**, kemudian **Data Understanding**. Bagian data berisi pembacaan CSV, kamus data, audit kualitas dan cakupan, EDA, serta audit awal fitur, target, dan pembagian waktu. Tabel dan empat grafik Matplotlib/Seaborn sudah tersimpan dalam notebook. Kode disusun bertahap dengan penamaan DataFrame, `display()`, `plt.figure()`, dan `plt.show()` seperti notebook pertemuan. Pelatihan model dan evaluasi kinerjanya akan dikerjakan pada tahap berikutnya.
+`Projek.ipynb` memuat alur dari Business Understanding, pengumpulan dan pemahaman data, EDA, cleaning, preprocessing, hingga evaluasi dan kesimpulan. Model yang dievaluasi adalah Decision Tree, Random Forest, dan SVM dengan kernel linear. Ketiganya dibandingkan dengan dua baseline pada pembagian waktu yang sama.
+
+Pada uji 2024, Random Forest mendapat macro-F1 0,6171 dan baseline persistensi arah mendapat 0,6344. Target peningkatan macro-F1 terhadap baseline terbaik belum tercapai.
 
 ## Fokus Business Understanding
 
@@ -43,7 +45,7 @@ Notebook yang sama digunakan untuk melanjutkan seluruh tahapan proyek. Dataset a
 
 ## Cara menjalankan
 
-Gunakan **Python 3.13.12**. Versi ini juga dicatat dalam `.python-version` dan diperiksa oleh sel kode pertama. Pustaka yang digunakan adalah pandas 2.3.3, NumPy 2.3.5, IPython 9.10.0, dan ipykernel 7.2.0.
+Gunakan **Python 3.13.12** sesuai `.python-version`. Versi pustaka untuk pengolahan, visualisasi, dan evaluasi model tercantum di [requirements.txt](requirements.txt).
 
 1. Buka terminal pada folder `17_IF-B_Sop-Pak-Min-Klaten`. Pastikan `python --version` menampilkan `Python 3.13.12`. Jika berbeda, pilih interpreter 3.13.12 terlebih dahulu.
 2. Buat lingkungan virtual dan pasang pustaka berikut melalui PowerShell.
@@ -55,7 +57,7 @@ Gunakan **Python 3.13.12**. Versi ini juga dicatat dalam `.python-version` dan d
 
 3. Buka `Projek.ipynb` di VS Code dengan ekstensi Jupyter atau melalui JupyterLab yang sudah terpasang. Pilih kernel dari `.venv` dengan Python 3.13.12.
 4. Gunakan **Restart Kernel and Run All** agar seluruh sel dijalankan dari awal. Biarkan CSV pada lokasi yang tercantum di struktur repo. Kode tidak memerlukan akses internet saat dijalankan.
-5. Periksa hasil sel terakhir. Jika semua pemeriksaan lolos, alur data akan menampilkan `511 → 576 → 436 → 410`.
+5. Periksa alur data `511 → 576 → 436 → 410` pada bagian Feature Selection dan hasil untuk 145 contoh uji pada bagian Evaluasi.
 
 GitHub dapat digunakan untuk membaca penjelasan, tabel, dan grafik yang tersimpan tanpa menjalankan ulang notebook. Penjelasan sumber dan checksum tersedia di [data/README.md](data/README.md).
 
@@ -63,13 +65,11 @@ GitHub dapat digunakan untuk membaca penjelasan, tabel, dan grafik yang tersimpa
 
 | Bagian | Isi |
 |---|---|
-| Business Understanding, bagian 1–9 | Masalah dan tujuan bisnis, SMART S–M–A–R–T, definisi tugas, asumsi, metrik pada bagian 6, risiko, use-case, dan pemetaan stakeholder–data. |
-| Data Understanding 10.1–10.2 | Sumber dan lisensi, pemeriksaan snapshot, kamus seluruh kolom, serta seleksi negara dan periode. |
-| Data Understanding 10.3–10.4 | Missing value, duplikasi, harga tidak positif, kalender bulanan, dan keterwakilan negara. |
-| Data Understanding 10.5 | Distribusi perubahan harga dan penandaan nilai ekstrem pada jendela latih. |
-| Data Understanding 10.6 | Audit fitur dan target, pembagian waktu, korelasi fitur, dan komposisi kelas. |
-| Data Understanding 10.7 | Kesimpulan, keterbatasan, tindak lanjut, dan pemeriksaan hasil. |
-| Plan future model dan algoritma, bagian 11 | Kandidat dan pengaturan teknis dari rancangan sebelumnya yang seluruhnya masih berupa rencana. |
+| Business Understanding, bagian 1–9 | Masalah, tujuan SMART, definisi tugas, metrik, dan risiko. |
+| Data Understanding, bagian 10 | Pengumpulan data, sumber dan lisensi, kamus data, seleksi, serta cakupan. |
+| EDA dan persiapan data, bagian 11–15 | Eksplorasi, audit kualitas, cleaning, preprocessing, dan feature selection. |
+| Modelling, bagian 16–19 | Pemilihan model, pelatihan, pengaturan parameter, dan hasil validasi. |
+| Progress 4, bagian 20–24 | Metrik uji, confusion matrix, perbandingan latih dan uji, pemilihan model, analisis kesalahan, kesimpulan, dan keterbatasan. |
 
 Hasil yang diperoleh dari snapshot yang disertakan:
 
@@ -78,7 +78,7 @@ Hasil yang diperoleh dari snapshot yang disertakan:
 - Audit fitur dan target menghasilkan **436 contoh lengkap**. Setelah 26 contoh pada batas waktu dikeluarkan, tersedia **120 latih, 145 validasi, dan 145 uji**.
 - EDA jendela latih memakai **165 return bulanan**, dengan **9 nilai** ditandai oleh pagar IQR per negara. Nilai tersebut dipertahankan karena penandaan belum membuktikan adanya kesalahan data.
 
-Harga LCU antarnegara tidak dibandingkan langsung. Eksplorasi yang dapat memengaruhi pemilihan fitur dibatasi pada data latih. Kelima fitur berasal dari harga dan kalender, sehingga bukan lima variabel sumber yang independen. Cakupan, tanggal publikasi yang tidak tersedia, dan seri yang pendek tetap membatasi penggunaan hasil.
+Harga LCU antarnegara tidak dibandingkan langsung. Eksplorasi yang dapat memengaruhi pemilihan fitur dibatasi pada data latih. Empat fitur dasar yang dipakai di luar target dan identitas adalah bulan, perubahan harga satu bulan, perubahan harga tiga bulan, dan volatilitas tiga bulan. Fitur tersebut dibentuk dari kalender dan riwayat harga. Cakupan, tanggal publikasi yang tidak tersedia, dan seri yang pendek tetap membatasi penggunaan hasil.
 
 ## Laporan dan sumber data
 
@@ -87,7 +87,3 @@ Lampiran C pada [laporan proyek](https://docs.google.com/document/d/1kpoLL2OyEa3
 FAO. 2026. *FAOSTAT: Producer Prices*. Snapshot diakses 15 Oktober 2026 dan diverifikasi ulang 26 Oktober 2026. [Portal koleksi](https://www.fao.org/faostat/en/#data/PP).
 
 `LICENSE` mempertahankan lisensi MIT untuk kode proyek. Dataset menggunakan CC BY 4.0 dengan [ketentuan tambahan basis data FAO](https://www.fao.org/contact-us/terms/db-terms-of-use/en). Atribusi lengkap dan batas penggunaan data tercantum dalam `data/README.md`. Tidak ada klaim dukungan atau validasi dari FAO.
-
-## Plan future model dan algoritma
-
-Rencana teknis ditempatkan setelah seluruh Data Understanding di `Projek.ipynb`. Regresi Logistik berregularisasi L2 dengan optimisasi L-BFGS dipertahankan sebagai kandidat utama awal, dan Random Forest sebagai kandidat pembanding. Rencana juga mencatat dua baseline, penanganan fitur, parameter awal, serta batas informasi latih/validasi/uji. Kesesuaian dengan materi praktikum harus diperiksa sebelum pelatihan. Kandidat dipilih melalui macro-F1 validasi, lalu dinilai pada data uji dengan pengaturan yang sama.

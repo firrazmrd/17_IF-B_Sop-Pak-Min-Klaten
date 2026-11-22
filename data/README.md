@@ -28,7 +28,7 @@ SHA-256 berkas:
 5f6470bc3e1284340aaa1022f032bdb8fb49c9aaf059054b41d19e3790636b76
 ```
 
-Notebook memeriksa ukuran dan checksum sebelum memproses data. Pemeriksaan manual dari akar repo juga dapat dilakukan melalui PowerShell:
+Checksum tersebut mengidentifikasi snapshot yang dipakai notebook. Untuk memeriksanya, jalankan perintah berikut dari akar repo melalui PowerShell.
 
 ```powershell
 Get-FileHash -Algorithm SHA256 -LiteralPath 'data/raw/faostat_rice_producer_prices.csv'
