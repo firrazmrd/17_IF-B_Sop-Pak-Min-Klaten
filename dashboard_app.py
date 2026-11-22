@@ -211,7 +211,7 @@ def overview(prices, result, year):
         if result.empty:
             st.info("Klasifikasi notebook tersedia untuk target 2022, 2023, dan 2024.")
         else:
-            preview = result[["Negara", "Bulan acuan", "Bulan sasaran", "Aktual", MODEL]].head(8)
+            preview = result[["Negara", "Bulan acuan", "Bulan sasaran", "Aktual", MODEL]].head(10)
             st.dataframe(readable_predictions(preview), hide_index=True, width="stretch")
 
 
