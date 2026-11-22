@@ -1,4 +1,4 @@
-# Klasifikasi Arah Kenaikan Harga Produsen Padi Bulan Berikutnya di 16 Negara Asia Periode 2022–2024
+# Klasifikasi Kenaikan Harga Produsen Padi Bulan Berikutnya di 16 Negara Asia Periode 2022–2024
 
 Kelompok **17 (Sop Pak Min Klaten)**, kelas **IF-B**, Data Science 2026/2027, UPN “Veteran” Yogyakarta. Repository ini digunakan untuk proyek akhir yang sama pada kelas teori dan praktikum.
 
@@ -8,22 +8,32 @@ Proyek ini mengkaji apakah riwayat harga dapat membantu mengenali kenaikan harga
 
 `Projek.ipynb` memuat alur dari Business Understanding, pengumpulan dan pemahaman data, EDA, cleaning, preprocessing, hingga evaluasi dan kesimpulan. Model yang dievaluasi adalah Decision Tree, Random Forest, dan SVM dengan kernel linear. Ketiganya dibandingkan dengan dua baseline pada pembagian waktu yang sama.
 
-Pada uji 2024, Random Forest mendapat macro-F1 0,6171 dan baseline persistensi arah mendapat 0,6344. Target peningkatan macro-F1 terhadap baseline terbaik belum tercapai.
+Evaluasi akhir memakai **145 contoh uji dari 14 negara pada 2024**. Berikut perbandingan macro-F1 pada contoh uji yang sama.
+
+| Model atau baseline | Macro-F1 uji |
+|---|---:|
+| Baseline persistensi arah | 0,6344 |
+| Random Forest | 0,6171 |
+| Decision Tree | 0,5927 |
+| SVM kernel linear | 0,5133 |
+| Baseline mayoritas latih | 0,3379 |
+
+Random Forest memperoleh skor tertinggi di antara model terlatih. Selisihnya terhadap baseline persistensi arah adalah **−0,0173**, sehingga target peningkatan macro-F1 belum tercapai.
 
 ## Fokus Business Understanding
 
 Business Understanding menjelaskan masalah pemantauan arah harga, status calon stakeholder, tujuan SMART yang dipisah menjadi lima unsur, definisi target, asumsi, metrik, risiko, nilai penggunaan, dan pemetaan stakeholder–data. **Bagian 6 notebook adalah Metrik keberhasilan.**
 
-Ukuran utama pengujian yang direncanakan adalah macro-F1. Tambahan informasi dinilai dari selisih terhadap pembanding sederhana terbaik pada contoh uji yang sama. Selisih positif belum membuktikan manfaat operasional atau keuntungan finansial. Ukuran ini menjadi dasar penilaian hasil klasifikasi pada data uji.
+Ukuran utama pengujian adalah macro-F1. Tambahan informasi dinilai dari selisih terhadap pembanding sederhana terbaik pada contoh uji yang sama. Selisih positif belum membuktikan manfaat operasional atau keuntungan finansial. Ukuran ini menjadi dasar penilaian hasil klasifikasi pada data uji.
 
 ## Anggota dan kontribusi
 
-| Nama | NIM | Kelas | Kontribusi bersama |
-|---|---|---|---|
-| Ghazian Muhammad Al Faruq | 123240013 | IF-B | Perumusan masalah, penelusuran sumber, dan penulisan penjelasan. |
-| M. Affan Musyafa' | 123240155 | IF-B | Perumusan masalah, penelusuran sumber, EDA, dan penulisan penjelasan. |
-| Firraz Muhammad Raihan Daffa | 123240170 | IF-B | Penelusuran sumber, audit data dan penulisan penjelasan. |
-| Jauza Ilham Mahardhika Putra | 123240174 | IF-B | Penelusuran sumber, audit data dan EDA |
+| Nama | NIM | Kelas | Progress 1 | Progress 2 | Progress 3 | Progress 4 |
+|---|---|---|---|---|---|---|
+| Ghazian Muhammad Al Faruq | 123240013 | IF-B | Perumusan masalah, tujuan SMART, penelusuran sumber, dan penulisan penjelasan. | Cleaning dan pemeriksaan kalender serta cakupan negara. | Penulisan penjelasan perbandingan validasi dan contoh prediksi. | Kesimpulan sementara dan jawaban atas pertanyaan Business Understanding. |
+| M. Affan Musyafa' | 123240155 | IF-B | Perumusan masalah, penelusuran sumber, dan penulisan penjelasan data. | EDA, visualisasi, dan feature selection. | Penulisan interpretasi hasil awal model. | Analisis FP dan FN serta grafik riwayat harga. |
+| Firraz Muhammad Raihan Daffa | 123240170 | IF-B | Penelusuran sumber, kamus data, dan penulisan penjelasan. | Audit kualitas data dan preprocessing. | Pemilihan model, proses training, pengaturan parameter, dan hasil modelling. | Pembahasan keterbatasan data dan model. |
+| Jauza Ilham Mahardhika Putra | 123240174 | IF-B | Penelusuran sumber dan seleksi data penelitian. | Audit kualitas data dan EDA. | Pemilihan model, proses training, pengaturan parameter, dan hasil modelling. | Evaluasi dan pemilihan model terbaik. |
 
 ## Isi repo
 
@@ -63,13 +73,14 @@ GitHub dapat digunakan untuk membaca penjelasan, tabel, dan grafik yang tersimpa
 
 ## Isi notebook dan hasil audit
 
-| Bagian | Isi |
-|---|---|
-| Business Understanding, bagian 1–9 | Masalah, tujuan SMART, definisi tugas, metrik, dan risiko. |
-| Data Understanding, bagian 10 | Pengumpulan data, sumber dan lisensi, kamus data, seleksi, serta cakupan. |
-| EDA dan persiapan data, bagian 11–15 | Eksplorasi, audit kualitas, cleaning, preprocessing, dan feature selection. |
-| Modelling, bagian 16–19 | Pemilihan model, pelatihan, pengaturan parameter, dan hasil validasi. |
-| Progress 4, bagian 20–24 | Metrik uji, confusion matrix, perbandingan latih dan uji, pemilihan model, analisis kesalahan, kesimpulan, dan keterbatasan. |
+| Tahap | Bagian notebook | Isi |
+|---|---|---|
+| Progress 1 | 1–10 | Business Understanding, tujuan SMART, metrik keberhasilan, sumber dan lisensi, kamus data, serta cakupan penelitian. |
+| Progress 2 | 11–15 | EDA, audit kualitas, cleaning, preprocessing, dan feature selection. |
+| Progress 3 | 16–19 | Pemilihan model, proses training, pengaturan parameter, perbandingan validasi, dan contoh prediksi. |
+| Progress 4 | 20–24 | Evaluasi data uji, pemilihan model terbaik, analisis kesalahan, kesimpulan sementara, dan keterbatasan. |
+
+Progress 4 menampilkan confusion matrix dan grafik macro-F1 uji, perbandingan skor latih dan uji, hasil per negara beserta jumlah contoh uji, serta riwayat harga pada contoh FP dan FN.
 
 Hasil yang diperoleh dari snapshot yang disertakan:
 
